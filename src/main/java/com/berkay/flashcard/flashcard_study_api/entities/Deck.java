@@ -10,8 +10,9 @@ import java.util.List;
 public class Deck {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true)
-    private int id;
+    private int deckId;
 
     private String title;
 
@@ -23,19 +24,19 @@ public class Deck {
     public Deck() {
     }
 
-    public Deck(int id, String title, String description,  List<Flashcard> flashcards) {
-        this.id = id;
+    public Deck(int deckId, String title, String description, List<Flashcard> flashcards) {
+        this.deckId = deckId;
         this.title = title;
         this.description = description;
         this.flashcards = flashcards;
     }
 
-    public int getId() {
-        return id;
+    public int getDeckId() {
+        return deckId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDeckId(int deckId) {
+        this.deckId = deckId;
     }
 
     public String getDescription() {
