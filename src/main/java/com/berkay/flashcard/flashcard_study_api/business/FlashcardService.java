@@ -1,6 +1,4 @@
 package com.berkay.flashcard.flashcard_study_api.business;
-
-import com.berkay.flashcard.flashcard_study_api.entities.Deck;
 import com.berkay.flashcard.flashcard_study_api.entities.Flashcard;
 
 import java.util.List;

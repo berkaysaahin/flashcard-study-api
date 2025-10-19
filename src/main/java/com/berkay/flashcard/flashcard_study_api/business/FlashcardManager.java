@@ -10,7 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -59,8 +58,12 @@ public class FlashcardManager implements FlashcardService {
 
         return this.flashcardDao.findById(flashcardId).filter(flashcard -> flashcard.getDeck().getDeckId() == deckId).map(
                 flashcard -> {
-                    flashcard.setQuestion(updatedFlashcard.getQuestion());
-                    flashcard.setAnswer(updatedFlashcard.getAnswer());
+                    if (updatedFlashcard.getQuestion() != null) {
+                        flashcard.setQuestion(updatedFlashcard.getQuestion());
+                    }
+                    if (updatedFlashcard.getAnswer() != null) {
+                        flashcard.setAnswer(updatedFlashcard.getAnswer());
+                    }
                     return this.flashcardDao.save(flashcard);
                 }
         ).orElse(null);

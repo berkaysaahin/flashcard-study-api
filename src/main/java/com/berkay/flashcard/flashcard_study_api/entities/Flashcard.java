@@ -1,5 +1,6 @@
 package com.berkay.flashcard.flashcard_study_api.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,6 +17,7 @@ public class Flashcard {
     private String answer;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "deck_id")
     private Deck deck;
 

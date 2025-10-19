@@ -38,7 +38,7 @@ public class FlashcardController {
         return flashcardService.getFlashcardsByDeck(deckId, page, pageSize);
     }
 
-    @PostMapping(value = "/{deckId}/flashcards/add" )
+    @PostMapping(value = "/{deckId}/flashcards" )
     public ResponseEntity<Flashcard> add( @PathVariable("deckId")  int deckId, @RequestBody Flashcard flashcard) {
          Flashcard saved = flashcardService.addFlashcardToDeck(deckId, flashcard);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
@@ -59,10 +59,5 @@ public class FlashcardController {
         String result = flashcardService.deleteFlashcard(flashcardId);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
-
-
-
-
-
 
 }
