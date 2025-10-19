@@ -50,4 +50,27 @@ public class DeckManager implements DeckService {
         return this.deckDao.getDeckByTitle(title);
     }
 
+    @Override
+    @Transactional
+    public Deck updateDeck(Deck updatedDeck){
+
+        return this.deckDao.findById(updatedDeck.getDeckId()).map(
+                deck -> {
+                    deck.setTitle(updatedDeck.getTitle());
+                    deck.setDescription(updatedDeck.getDescription());
+                    return deckDao.save(deck);
+                }
+        ).orElse(null);
+
+    }
+
+    @Transactional //if something happens in the process line all changes in database are enrolled back
+    public String deleteDeckById(int deckId) {
+        if (!deckDao.existsById(deckId)) {
+            return "Deck not found";
+        }
+        this.deckDao.deleteById(deckId);
+        return "Deck deleted successfully";
+    }
+
 }

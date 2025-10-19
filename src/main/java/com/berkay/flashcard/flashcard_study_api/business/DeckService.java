@@ -16,5 +16,9 @@ public interface DeckService {
 
     Deck getDeckByTitle(String title);
 
-    Void deleteById(String title);
+    Deck updateDeck(Deck updatedDeck);
+
+    String deleteDeckById(int deckId);
+
+
 }

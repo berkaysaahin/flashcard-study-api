@@ -31,6 +31,7 @@ public class Deck {
         this.flashcards = flashcards;
     }
 
+
     public int getDeckId() {
         return deckId;
     }
