@@ -64,6 +64,7 @@ public class DeckManager implements DeckService {
 
     }
 
+    @Override
     @Transactional //if something happens in the process line all changes in database are enrolled back
     public String deleteDeckById(int deckId) {
         if (!deckDao.existsById(deckId)) {
